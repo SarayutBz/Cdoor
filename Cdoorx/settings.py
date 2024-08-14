@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homepage.apps.HomepageConfig',
     'login.apps.LoginConfig',
-    'registerPage.apps.RegisterpageConfig'
+    'registerPage.apps.RegisterpageConfig',
+    'condo.apps.CondoConfig'
    
 ]
 

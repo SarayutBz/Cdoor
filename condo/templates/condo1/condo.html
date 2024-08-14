@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/037a863ff4.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/logo1.png' %}">
+    <title>Cdoor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Inter", sans-serif;
+        }
+
+        .menu {
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #CACACA;
+            box-shadow: 0 4px 8px rgba(162, 162, 162, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+        }
+
+        .menu h3 {
+            margin-top: 12px;
+            color: #1D5C80;
+            font-size: 28px;
+        }
+
+        .right-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .search {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .search input {
+            font-size: 18px;
+            height: 30px;
+            width: 200px;
+            color: #1D5C80;
+            border-radius: 20px;
+            border: 2px solid #1D5C80;
+            padding: 5px 10px;
+        }
+
+        .search input::placeholder {
+            color: #1D5C80;
+        }
+
+        .search i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: #1D5C80;
+            font-size: 18px;
+        }
+
+        #user {
+            font-size: 40px;
+            color: #1D5C80;
+        }
+
+        .box1 {
+            height: 90px;
+            background-color: #DADADA;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box-chose1 {
+            width: 340px;
+            height: 34px;
+            background: #FFF;
+            border: 1px solid #545252;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+
+        .box-chose1 i {
+            margin-left: 10px;
+        }
+
+        .dropdown-menu {
+            z-10;
+            display: none;
+            background-color: #FFF;
+            border-radius: 0.375rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            width: 340px;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="d-flex align-items-center">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo1.png' %}" alt="Logo" width="45px" height="45px">
+            </a>
+            <a href="{% url 'home' %}">
+                <h3>C|DOOR</h3>
+            </a>
+        </div>
+        <div class="right-menu">
+            <div class="search">
+                <input type="text" placeholder="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <a href="{% url 'login' %}">
+                <i id="user" class="fa-solid fa-circle-user"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="box1">
+        <div class="box-search">
+            <div id="dropdownRadioHelperButton" class="box-chose1">
+                <h3 class="ml-3">ทำเลที่ตั้ง</h3>
+                <i class="fa-solid fa-filter"></i>
+            </div>
+            <!-- Dropdown menu -->
+            <div id="dropdownRadioHelper" class="dropdown-menu">
+                <ul class="p-3 space-y-1 text-sm text-gray-700">
+                    <li>
+                        <div class="flex p-2 rounded hover:bg-gray-100">
+                            <div class="flex items-center h-5">
+                                <input id="helper-radio-4" name="helper-radio" type="radio" value=""
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                            </div>
+                            <div class="ml-2 text-sm">
+                                <label for="helper-radio-4" class="font-medium text-gray-900">
+                                    <div>ด้านหน้า มหาวิทยาลัย</div>
+                                    <p class="text-xs font-normal text-gray-500">หอพัก โซน ด้านหน้ามหาลัยแม่โจ้
+                                    </p>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex p-2 rounded hover:bg-gray-100">
+                            <div class="flex items-center h-5">
+                                <input id="helper-radio-5" name="helper-radio" type="radio" value=""
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                            </div>
+                            <div class="ml-2 text-sm">
+                                <label for="helper-radio-5" class="font-medium text-gray-900">
+                                    <div>ประตูบางเขน</div>
+                                    <p class="text-xs font-normal text-gray-500">หอพัก ใกล้ ประตูหลัง มหาลัยแม่โจ้
+                                    </p>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex p-2 rounded hover:bg-gray-100">
+                            <div class="flex items-center h-5">
+                                <input id="helper-radio-6" name="helper-radio" type="radio" value=""
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                            </div>
+                            <div class="ml-2 text-sm">
+                                <label for="helper-radio-6" class="font-medium text-gray-900">
+                                    <div>โซน หลิ่งมื่น</div>
+                                    <p class="text-xs font-normal text-gray-500">หอพัก บริเวณ หลิ่งมื่น
+                                    </p>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex p-2 rounded hover:bg-gray-100">
+                            <div class="flex items-center h-5">
+                                <input id="helper-radio-6" name="helper-radio" type="radio" value=""
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                            </div>
+                            <div class="ml-2 text-sm">
+                                <label for="helper-radio-6" class="font-medium text-gray-900">
+                                    <div>ซอยวัฒมงคล</div>
+                                    <p class="text-xs font-normal text-gray-500">หอพัก บริเวณ ซอยวัฒมงคล
+                                    </p>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex p-2 rounded hover:bg-gray-100">
+                            <div class="flex items-center h-5">
+                                <input id="helper-radio-6" name="helper-radio" type="radio" value=""
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                            </div>
+                            <div class="ml-2 text-sm">
+                                <label for="helper-radio-6" class="font-medium text-gray-900">
+                                    <div>ซอยกรุงไทย</div>
+                                    <p class="text-xs font-normal text-gray-500">หอพัก บริเวณ ซอยกรุงไทย
+                                    </p>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex p-2 rounded hover:bg-gray-100">
+                            <div class="flex items-center h-5">
+                                <input id="helper-radio-6" name="helper-radio" type="radio" value=""
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                            </div>
+                            <div class="ml-2 text-sm">
+                                <label for="helper-radio-6" class="font-medium text-gray-900">
+                                    <div>สภ.แม่โจ้</div>
+                                    <p class="text-xs font-normal text-gray-500">หอพัก บริเวณ สภ.แม่โจ้
+                                    </p>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="box-price ml-2">
+            <div class="box-chose1">
+                <h3 class="ml-3">ราคา</h3>
+                <i class="fa-solid fa-filter"></i>
+            </div>
+        </div>
+
+        <div class="button mt-1">
+          <button type="button"   class="mx-2 text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">ค้นหา</button>
+        </div>
+
+    </div>
+
+    <script>
+        const dropdownButton = document.getElementById('dropdownRadioHelperButton');
+        const dropdownMenu = document.getElementById('dropdownRadioHelper');
+
+        dropdownButton.addEventListener('click', function () {
+            dropdownMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>
