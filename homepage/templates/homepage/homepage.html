@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/037a863ff4.js" crossorigin="anonymous"></script>
@@ -11,7 +12,8 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Document</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'images/logo1.png' %}">
+  <title>Cdoor</title>
 </head>
 
 <style>
@@ -256,16 +258,24 @@
   }
 </style>
 
+
 <body>
 
   <div class="menu">
-    <h3>C|DOOR</h3>
+    <div class="box-icon d-flex ">
+
+      <img class="mr-2" src="{% static 'images/logo1.png' %}" alt="Logo" width="45px" height="15px">
+      <h3>C|DOOR</h3>
+    </div>
     <div class="right-menu">
       <div class="search">
         <input type="text" placeholder="search">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
-      <i id="user" class="fa-solid fa-circle-user"></i>
+      <a href="{% url 'login' %}">
+        <i id="user" class="fa-solid fa-circle-user"></i>
+
+      </a>
     </div>
   </div>
 
@@ -273,9 +283,9 @@
 
     <div class="box-choose">
       <div class="grid-item1">
-      
-          <h3>หอพัก <br> และคอนโด</h3>
-        </a>
+
+        <h3>หอพัก <br> และคอนโด</h3>
+
       </div>
 
       <div class="grid-item2">
