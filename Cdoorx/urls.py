@@ -25,4 +25,6 @@ urlpatterns = [
     path('users/', include('users.urls')),  # ต้องมี include ของ users.urls ที่มี 'users/' เป็น base URL
     path('', include('homepage.urls')),  # สำหรับ home page
     path('condo/', include('condo.urls')),  # สำหรับ condo
+    path('Reviews/', include('Reviews.urls'))
+    
 ]
