@@ -38,9 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'homepage.apps.HomepageConfig',
-    'login.apps.LoginConfig',
-    'registerPage.apps.RegisterpageConfig',
-    'condo.apps.CondoConfig'
+    'condo.apps.CondoConfig',
+     'accounts',
    
 ]
 
@@ -78,16 +77,16 @@ WSGI_APPLICATION = 'Cdoorx.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'kuy',
-#         'USER': 'root',
-#         'PASSWORD': '',        # ใส่รหัสด้วย
-#         'HOST': 'localhost',   # หรือ IP ของ MySQL Server
-#         'PORT': '3306',        # หมายเลขพอร์ตของ MySQL
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cdoor',
+        'USER': 'sayuball',
+        'PASSWORD': 'loveyousomust123',        # ใส่รหัสด้วย
+        'HOST': 'localhost',   # หรือ IP ของ MySQL Server
+        'PORT': '3306',        # หมายเลขพอร์ตของ MySQL
+    }
+}
 
 
 # Password validation

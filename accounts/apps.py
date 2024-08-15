@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class RegisterpageConfig(AppConfig):
+class AccountsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'registerPage'
+    name = 'accounts'

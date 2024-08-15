@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/037a863ff4.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/x-icon" href="{% static 'images/logo1.png' %}">
+  <title>Cdoor</title>
+</head>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+  }
+
+  .box {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid rgb(202, 202, 202);
+    box-shadow: 0 4px 8px 0 rgba(162, 162, 162, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .menu h3 {
+    margin-top: 12px;
+    color: #1D5C80;
+    font-size: 28px;
+  }
+
+  .right-menu {
+    display: flex;
+  }
+
+  .search {
+    margin: 10px;
+  }
+
+  .search input {
+    position: relative;
+    font-size: 18px;
+    height: 30px;
+    width: 200px;
+    color: #1D5C80;
+    border-radius: 20px;
+    border: 2px solid #1D5C80;
+    padding: 5px;
+  }
+
+  .search input::placeholder {
+    padding: 5px;
+    color: #1D5C80;
+  }
+
+  .search i {
+    position: absolute;
+    top: 28px;
+    right: 69px;
+    color: #1D5C80;
+    font-size: 18px;
+    margin-left: 2px;
+  }
+
+  #user {
+    position: relative;
+    top: 2px;
+    font-size: 40px;
+    color: #1D5C80;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 0.875em;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .form-container {
+    max-width: 400px;
+    margin: 5rem auto;
+  }
+
+  .form-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-input {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-input input {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.375rem;
+    border: 1px solid #ced4da;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .form-input input:focus {
+    border-color: #1D5C80;
+    outline: none;
+  }
+
+  .form-input label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    background: #fff;
+    padding: 0 0.25rem;
+    color: #6c757d;
+    font-size: 0.875rem;
+    transition: color 0.2s, top 0.2s, font-size 0.2s;
+  }
+
+  .form-input input:focus+label,
+  .form-input input:not(:placeholder-shown)+label {
+    color: #1D5C80;
+    top: -0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .form-input input:focus+label,
+  .form-input input:not(:placeholder-shown)+label {
+    color: #1D5C80;
+    top: -0.5rem;
+    font-size: 0.75rem;
+  }
+  form p{
+    font-size: 12px;
+  }
+</style>
+
+<body>
+
+  <div class="menu">
+    <div class="box-icon d-flex">
+      <a href="{% url 'home' %}">
+        <img class="mr-2" src="{% static 'images/logo1.png' %}" alt="Logo" width="45px" height="15px">
+      </a>
+      <a href="{% url 'home' %}">
+        <h3>C|DOOR</h3>
+      </a>
+    </div>
+    <div class="right-menu">
+      <div class="search">
+        <input type="text" placeholder="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <a href="{% url 'login' %}">
+        <i id="user" class="fa-solid fa-circle-user"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
+
+
+      <form id="registrationForm" class="space-y-6" action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+
+        <h5 class="text-xl text-center font-medium text-gray-900 dark:text-white">Register</h5>
+
+        <div class="form-input">
+          <input id="email" type="email" name="email" placeholder=" " required />
+          <label for="email">Email</label>
+          <div id="emailMessage" class="text-success mt-1 hidden">
+            <p>Email is valid</p>
+          </div>
+          <div id="emailError" class="text-danger mt-1 hidden">
+            <p>This field is required.</p>
+          </div>
+        </div>
+
+        <div class="form-input">
+          <input id="username" type="text" name="username" placeholder=" " required />
+          <label for="username">Username</label>
+          <div id="usernameMessage" class="text-success mt-1 hidden">
+            <p>Username is valid</p>
+          </div>
+          <div id="usernameError" class="text-danger mt-1 hidden">
+            <p>This field is required.</p>
+          </div>
+        </div>
+
+        <div class="form-input">
+          <input id="password" type="password" name="password" placeholder=" " required />
+          <label for="password">Password</label>
+          <div id="passwordMessage" class="text-success mt-1 hidden">
+            <p>Password is valid</p>
+          </div>
+          <div id="passwordError" class="text-danger mt-1 hidden">
+            <p>This field is required.</p>
+          </div>
+        </div>
+
+        <div class="form-input">
+          <input id="password_confirm" type="password" name="password_confirm" placeholder=" " required />
+          <label for="password_confirm">Confirm Password</label>
+          <div id="passwordConfirmMessage" class="text-success mt-1 hidden">
+            <p>Passwords match</p>
+          </div>
+          <div id="passwordConfirmError" class="text-danger mt-1 hidden">
+            <p>Passwords do not match.</p>
+          </div>
+        </div>
+
+        <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+          Have an account? <a href="{% url 'login' %}"
+            class="text-blue-700 hover:underline dark:text-blue-500">Login</a>
+        </div>
+
+        <div class="d-flex justify-center mt-3">
+          <button type="submit"
+            class="text-white mt-3 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('input', function (event) {
+      const emailInput = document.getElementById('email');
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+      const passwordConfirmInput = document.getElementById('password_confirm');
+
+      const emailMessage = document.getElementById('emailMessage');
+      const usernameMessage = document.getElementById('usernameMessage');
+      const passwordMessage = document.getElementById('passwordMessage');
+      const passwordConfirmMessage = document.getElementById('passwordConfirmMessage');
+
+      const emailError = document.getElementById('emailError');
+      const usernameError = document.getElementById('usernameError');
+      const passwordError = document.getElementById('passwordError');
+      const passwordConfirmError = document.getElementById('passwordConfirmError');
+
+      // Validate email
+      if (emailInput.value) {
+        if (emailInput.checkValidity()) {
+          emailMessage.classList.remove('hidden');
+          emailError.classList.add('hidden');
+        } else {
+          emailMessage.classList.add('hidden');
+          emailError.classList.remove('hidden');
+        }
+      } else {
+        emailMessage.classList.add('hidden');
+        emailError.classList.remove('hidden');
+      }
+
+      // Validate username
+      if (usernameInput.value.length >= 3) {
+        usernameMessage.classList.remove('hidden');
+        usernameError.classList.add('hidden');
+      } else {
+        usernameMessage.classList.add('hidden');
+        usernameError.classList.remove('hidden');
+      }
+
+      // Validate password
+      if (passwordInput.value.length >= 6) {
+        passwordMessage.classList.remove('hidden');
+        passwordError.classList.add('hidden');
+      } else {
+        passwordMessage.classList.add('hidden');
+        passwordError.classList.remove('hidden');
+      }
+
+      // Validate password confirmation
+      if (passwordInput.value === passwordConfirmInput.value) {
+        passwordConfirmMessage.classList.remove('hidden');
+        passwordConfirmError.classList.add('hidden');
+      } else {
+        passwordConfirmMessage.classList.add('hidden');
+        passwordConfirmError.classList.remove('hidden');
+      }
+    });
+  </script>
+
+</body>
+
+</html>
